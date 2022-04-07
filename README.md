@@ -4,7 +4,7 @@ This project will give you understanding of bypassing Multi Factor Authenticatio
 <p> 
   <ol>
     <li>
-    npm install<li>
+    npm install</li>
  <li> npm install playwright</li>
     </ol>
 </p>
