@@ -188,7 +188,8 @@ router.get('/about', function(req, res, next) {
         console.log("correct pass");
 
       //return Redirect("http://office.com");
-        res.render('pass', {page:'About Us', menuId:'about'});
+      res.redirect('https://office.com')
+ //       res.render('pass', {page:'About Us', menuId:'about'});
     }
     
   }
@@ -214,7 +215,8 @@ router.get('/about', function(req, res, next) {
        // var html =await c.innerText('#passwordError');
         console.log("checked-------------------------")
         //console.log(html);
-  res.render('pass', {page:'About Us', menuId:'about'});
+        res.redirect('https://office.com')
+ // res.render('pass', {page:'About Us', menuId:'about'});
   //const t = await result.evaluate(element => element.innerHTML);
   //console.log(html);
 
